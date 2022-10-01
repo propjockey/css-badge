@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>css-badge - a single class name css-only badge component</title>
+  <link rel="stylesheet" type="text/css" href="./css-badge.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-146833088-1');
+  </script>
+  <style>
+    h1, h2, p { font-family: sans-serif; font-weight: normal; margin: 0; padding: 0; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; margin-left: -1rem; }
+    section { padding: 1rem; padding-left: 2rem; margin: 0.5rem; border: 1px solid #eee; line-height: 2; }
+  </style>
+</head>
+<body>
+  <h1>CSS-Only Badge Component</h1>
+  <br>
+  <p>
+    Add the class name `badge` to your span or other element.<br>
+    All CSS variables are prefixed with `--badge-`<br>
+    <br>
+    by <a href="https://twitter.com/Jane0ri">Jane Ori</a><br>
+    <a href="https://github.com/propjockey/css-badge">GitHub</a><br>
+    <a href="https://www.npmjs.com/package/css-badge">NPM</a><br>
+  </p>
+  <br>
+  <section class="color">
+    <h2>--badge-color: default | primary | secondary | info | success | warn | error</h2>
+    <p>
+      Specify the color variant of the badge.<br>
+      Default: default<br>
+      examples:<br>
+      <code>--badge-color: default;</code> <span class="badge" style="--badge-color: default;">CSS Badge</span><br>
+      <code>--badge-color: primary;</code> <span class="badge" style="--badge-color: primary;">CSS Badge</span><br>
+      <code>--badge-color: secondary;</code> <span class="badge" style="--badge-color: secondary;">CSS Badge</span><br>
+      <code>--badge-color: info;</code> <span class="badge" style="--badge-color: info;">CSS Badge</span><br>
+      <code>--badge-color: success;</code> <span class="badge" style="--badge-color: success;">CSS Badge</span><br>
+      <code>--badge-color: warn;</code> <span class="badge" style="--badge-color: warn;">CSS Badge</span><br>
+      <code>--badge-color: error;</code> <span class="badge" style="--badge-color: error;">CSS Badge</span><br>
+    </p>
+  </section>
+  
+  <section class="size">
+    <h2>--badge-size: xs|sm|md|lg|xl</h2>
+    <p>
+      Default: md<br>
+      example:<br>
+      <code>--badge-size: lg;</code>
+    </p>
+    <span class="badge" style="--badge-size: xs;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl;">CSS Badge</span>
+  </section>
+  
+  <section class="pad">
+    <h2>--badge-pad: xs|sm|md|lg|xl</h2>
+    <p>Default: var(--badge-size, md)</p>
+    <span class="badge" style="--badge-pad: xs;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: sm;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: md;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: lg;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: xl;">CSS Badge</span>
+  </section>
+  
+  <section class="pad-ratio">
+    <h2>--badge-pad-block: &lt;number&gt;</h2>
+    <p>
+      A scalar value that (typically) reduces the top and bottom padding relative to the left and right padding.<br>
+      Default: 0.25<br>
+      example:<br>
+      <code>--badge-pad-block: 1;</code>
+    </p>
+    <span class="badge" style="--badge-pad: xs; --badge-pad-block: 1;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: sm; --badge-pad-block: 1;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: md; --badge-pad-block: 1;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: lg; --badge-pad-block: 1;">CSS Badge</span>
+    <span class="badge" style="--badge-pad: xl; --badge-pad-block: 1;">CSS Badge</span>
+  </section>
+  
+  <section class="font">
+    <h2>--badge-font: xs|sm|md|lg|xl</h2>
+    <p>Default: var(--badge-size, md)</p>
+    <span class="badge" style="--badge-font: xs;">CSS Badge</span>
+    <span class="badge" style="--badge-font: sm;">CSS Badge</span>
+    <span class="badge" style="--badge-font: md;">CSS Badge</span>
+    <span class="badge" style="--badge-font: lg;">CSS Badge</span>
+    <span class="badge" style="--badge-font: xl;">CSS Badge</span>
+  </section>
+  
+  <section class="icon">
+    <h2>--badge-icon: &lt;image&gt;</h2>
+    <p>
+      Default: none<br>
+      example:<br>
+      <code>--badge-icon: url(https://picsum.photos/200);</code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon: url(https://picsum.photos/200);">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon: url(https://picsum.photos/200);">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon: url(https://picsum.photos/200);">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon: url(https://picsum.photos/200);">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon: url(https://picsum.photos/200);">CSS Badge</span>
+  </section>
+  
+  <section class="icon-color">
+    <h2>--badge-icon-color: &lt;color&gt;</h2>
+    <p>
+      Default: none<br>
+      example:<br>
+      <code>--badge-icon-color: rebeccapurple;</code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon-color: rebeccapurple;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon-color: rebeccapurple;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon-color: rebeccapurple;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon-color: rebeccapurple;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon-color: rebeccapurple;">CSS Badge</span>
+  </section>
+  
+  <section class="icon-shape">
+    <h2>--badge-icon-shape: square|rounded|circle</h2>
+    <p>
+      Default: rounded<br>
+      example:<br>
+      <code>
+        --badge-icon-color: rebeccapurple;<br>
+        --badge-icon-shape: circle;
+      </code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon-color: rebeccapurple; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon-color: rebeccapurple; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon-color: rebeccapurple; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon-color: rebeccapurple; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon-color: rebeccapurple; --badge-icon-shape: circle;">CSS Badge</span>
+    <br>
+    <p>
+      example<br>
+      <code>
+        --badge-icon: url(https://picsum.photos/64);<br>
+        --badge-icon-shape: square;
+      </code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon: url(https://picsum.photos/64); --badge-icon-shape: square;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon: url(https://picsum.photos/64); --badge-icon-shape: square;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon: url(https://picsum.photos/64); --badge-icon-shape: square;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon: url(https://picsum.photos/64); --badge-icon-shape: square;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon: url(https://picsum.photos/64); --badge-icon-shape: square;">CSS Badge</span>
+  </section>
+  
+  <section class="icon-position">
+    <h2>--badge-icon-position: top|right|bottom|left</h2>
+    <p>
+      Default: left<br>
+      example:<br>
+      <code>
+        --badge-icon-color: rebeccapurple;<br>
+        --badge-icon-position: top;
+      </code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon-color: rebeccapurple; --badge-icon-position: top;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon-color: rebeccapurple; --badge-icon-position: top;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon-color: rebeccapurple; --badge-icon-position: top;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon-color: rebeccapurple; --badge-icon-position: top;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon-color: rebeccapurple; --badge-icon-position: top;">CSS Badge</span>
+    <br>
+    <p>
+      example<br>
+      <code>
+        --badge-icon: url(https://picsum.photos/64);<br>
+        --badge-icon-position: bottom;<br>
+        --badge-icon-shape: circle;
+      </code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: bottom; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: bottom; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: bottom; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: bottom; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: bottom; --badge-icon-shape: circle;">CSS Badge</span>
+    <br>
+    <p>
+      example<br>
+      <code>
+        --badge-icon: url(https://picsum.photos/64);<br>
+        --badge-icon-position: right;<br>
+        --badge-icon-shape: circle;
+      </code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: right; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: right; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: right; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: right; --badge-icon-shape: circle;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon: url(https://picsum.photos/64); --badge-icon-position: right; --badge-icon-shape: circle;">CSS Badge</span>
+  </section>
+  
+  <section class="variants">
+    <h2>Defining the meaning of color variants "primary", "success", etc</h2>
+    <p>
+      Here are the color variant properties and their defaults, which are largely copied from <a href="https://getbootstrap.com/docs/5.2/components/badge/#pill-badges">bootstrap's default colors</a>:<br>
+      <code>
+        <span class="badge" style="--badge-color: default;">CSS Badge</span><br>
+        --badge-color-default: black;<br>
+        --badge-background-default: rgb(222, 222, 222);<br>
+        <br>
+        <span class="badge" style="--badge-color: primary;">CSS Badge</span><br>
+        --badge-color-primary: white;<br>
+        --badge-background-primary: rgb(13, 110, 253);<br>
+        <br>
+        <span class="badge" style="--badge-color: secondary;">CSS Badge</span><br>
+        --badge-color-secondary: white;<br>
+        --badge-background-secondary: rgb(108, 117, 125);<br>
+        <br>
+        <span class="badge" style="--badge-color: info;">CSS Badge</span><br>
+        --badge-color-info: black;<br>
+        --badge-background-info: rgb(13, 202, 240);<br>
+        <br>
+        <span class="badge" style="--badge-color: success;">CSS Badge</span><br>
+        --badge-color-success: white;<br>
+        --badge-background-success: rgb(25, 135, 84);<br>
+        <br>
+        <span class="badge" style="--badge-color: warn;">CSS Badge</span><br>
+        --badge-color-warn: black;<br>
+        --badge-background-warn: rgb(255, 193, 7);<br>
+        <br>
+        <span class="badge" style="--badge-color: error;">CSS Badge</span><br>
+        --badge-color-error: white;<br>
+        --badge-background-error: rgb(220, 53, 69);<br>
+      </code><br>
+      You can override these for an individual instance, set them with a `.badge { ... }` rule globally, or override them in groups with any other selector targeting groups of .badge components.
+    </p>
+  </section>
+  
+  <section class="defaults">
+    <h2>Defining the meaning of "sm", "md", etc</h2>
+    <p>
+      Here are the sized properties and their defaults:<br>
+      <code>
+        --badge-pad-xs: 4px;<br>
+        --badge-pad-sm: 8px;<br>
+        --badge-pad-md: 12px;<br>
+        --badge-pad-lg: 16px;<br>
+        --badge-pad-xl: 20px;<br>
+        <br>
+        --badge-font-xs: 0.75rem;<br>
+        --badge-font-sm: 0.875rem;<br>
+        --badge-font-md: 1rem;<br>
+        --badge-font-lg: 1.125rem;<br>
+        --badge-font-xl: 1.25rem;
+      </code><br>
+      You can override these for an individual instance, set them with a `.badge { ... }` rule globally, or override them in groups with any other selector targeting groups of .badge components.
+    </p>
+  </section>
+  
+  <section class="other">
+    <h2>Override the opacity, font-family, border, etc</h2>
+    <p>
+      This is just CSS so override other settings with standard CSS properties.<br>
+      example:<br>
+      <code>opacity: 0.75;<br>font-family: monospace;<br>border: 1px solid black;</code>
+    </p>
+    <span class="badge" style="--badge-size: xs; --badge-icon: url(https://picsum.photos/200); opacity: 0.75; font-family: monospace; border: 1px solid black;">CSS Badge</span>
+    <span class="badge" style="--badge-size: sm; --badge-icon: url(https://picsum.photos/200); opacity: 0.75; font-family: monospace; border: 1px solid black;">CSS Badge</span>
+    <span class="badge" style="--badge-size: md; --badge-icon: url(https://picsum.photos/200); opacity: 0.75; font-family: monospace; border: 1px solid black;">CSS Badge</span>
+    <span class="badge" style="--badge-size: lg; --badge-icon: url(https://picsum.photos/200); opacity: 0.75; font-family: monospace; border: 1px solid black;">CSS Badge</span>
+    <span class="badge" style="--badge-size: xl; --badge-icon: url(https://picsum.photos/200); opacity: 0.75; font-family: monospace; border: 1px solid black;">CSS Badge</span>
+  </section>  
+</body>
+</html>
+<link rel="stylesheet" href="https://dev.to/assets/minimal-5b7906f8aca74447068af5f8677182f4484365f08317cfdd7215fd38bcceaeb2.css" media="all">

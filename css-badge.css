@@ -1,0 +1,281 @@
+/**
+ * css-badge
+ * BSD 2-Clause License
+ * Copyright (c) Jane Ori, PropJockey, 2022
+ */
+
+/* Registered User State vars */
+@property --badge-size { syntax: "xs|sm|md|lg|xl"; initial-value: md; inherits: true; }
+@property --badge-pad { syntax: "xs|sm|md|lg|xl"; initial-value: md; inherits: true; }
+@property --badge-font { syntax: "xs|sm|md|lg|xl"; initial-value: md; inherits: true; }
+@property --badge-color { syntax: "default|primary|secondary|info|success|warn|error"; initial-value: left; inherits: true; }
+@property --badge-icon-shape { syntax: "square|rounded|circle"; initial-value: rounded; inherits: true; }
+@property --badge-icon-position { syntax: "none|left|right|top|bottom"; initial-value: left; inherits: true; }
+
+/* Internal/Private vars */
+@property --_badge-pad-xs-else-0 { syntax: "xs|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-pad-sm-else-0 { syntax: "sm|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-pad-md-else-0 { syntax: "md|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-pad-lg-else-0 { syntax: "lg|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-pad-xl-else-0 { syntax: "xl|<integer>"; initial-value: 0; inherits: true; }
+
+@property --_badge-font-xs-else-0 { syntax: "xs|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-font-sm-else-0 { syntax: "sm|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-font-md-else-0 { syntax: "md|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-font-lg-else-0 { syntax: "lg|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-font-xl-else-0 { syntax: "xl|<integer>"; initial-value: 0; inherits: true; }
+
+@property --_badge-color-default-else-0 { syntax: "default|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-color-primary-else-0 { syntax: "primary|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-color-secondary-else-0 { syntax: "secondary|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-color-info-else-0 { syntax: "info|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-color-success-else-0 { syntax: "success|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-color-warn-else-0 { syntax: "warn|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-color-error-else-0 { syntax: "error|<integer>"; initial-value: 0; inherits: true; }
+
+@property --_badge-is-square-else-0 { syntax: "square|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-is-rounded-else-0 { syntax: "rounded|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-is-circle-else-0 { syntax: "circle|<integer>"; initial-value: 0; inherits: true; }
+
+@property --_badge-ip-left-else-0 { syntax: "left|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-ip-right-else-0 { syntax: "right|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-ip-top-else-0 { syntax: "top|<integer>"; initial-value: 0; inherits: true; }
+@property --_badge-ip-bottom-else-0 { syntax: "bottom|<integer>"; initial-value: 0; inherits: true; }
+
+@property --_badge-ip-bd-n-else-lt { syntax: "none|left|top"; initial-value: none; inherits: true; }
+@property --_badge-ip-bd-ni-else-t { syntax: "none|inline-block|top"; initial-value: inline-block; inherits: true; }
+@property --_badge-ip-before-display { syntax: "none|inline-block|block"; initial-value: block; inherits: true; }
+
+@property --_badge-ip-ad-n-else-rb { syntax: "none|right|bottom"; initial-value: none; inherits: true; }
+@property --_badge-ip-ad-ni-else-b { syntax: "none|inline-block|bottom"; initial-value: inline-block; inherits: true; }
+@property --_badge-ip-after-display { syntax: "none|inline-block|block"; initial-value: block; inherits: true; }
+
+@property --_badge-ip-fd-r-else-tb { syntax: "row|top|bottom"; initial-value: row; inherits: true; }
+@property --_badge-ip-flex-direction { syntax: "row|column"; initial-value: column; inherits: true; }
+
+/* Read-Only vars derived from user state (reflective constants) */
+@property --badge-pad-XS { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-pad-SM { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-pad-MD { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-pad-LG { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-pad-XL { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+@property --badge-font-XS { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-font-SM { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-font-MD { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-font-LG { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-font-XL { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+@property --badge-color-DEFAULT { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-color-PRIMARY { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-color-SECONDARY { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-color-INFO { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-color-SUCCESS { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-color-WARN { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-color-ERROR { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+@property --badge-is-SQUARE { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-is-ROUNDED { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-is-CIRCLE { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+@property --badge-ip-LEFT { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-ip-RIGHT { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-ip-TOP { syntax: "<integer>"; initial-value: 1; inherits: true; }
+@property --badge-ip-BOTTOM { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+@keyframes badgeColorScheme {
+  0% { color: var(--badge-color-default); background: var(--badge-background-default); } /* -5ms of 100ms :: default */
+  10% { color: var(--badge-color-primary); background: var(--badge-background-primary); } /* -15ms of 100ms :: primary */
+  20% { color: var(--badge-color-secondary); background: var(--badge-background-secondary); } /* -25ms of 100ms :: secondary */
+  30% { color: var(--badge-color-info); background: var(--badge-background-info); } /* -35ms of 100ms :: info */
+  40% { color: var(--badge-color-success); background: var(--badge-background-success); } /* -45ms of 100ms :: success */
+  50% { color: var(--badge-color-warn); background: var(--badge-background-warn); } /* -55ms of 100ms :: warn */
+  60% { color: var(--badge-color-error); background: var(--badge-background-error); } /* -65ms of 100ms :: error */
+}
+
+:where(.badge) {
+  font-family: sans-serif;
+  --badge-color-default: black;
+  --badge-color-primary: white;
+  --badge-color-secondary: white;
+  --badge-color-info: black;
+  --badge-color-success: white;
+  --badge-color-warn: black;
+  --badge-color-error: white;
+  --badge-background-default: rgb(222, 222, 222);
+  --badge-background-primary: rgb(13, 110, 253);
+  --badge-background-secondary: rgb(108, 117, 125);
+  --badge-background-info: rgb(13, 202, 240);
+  --badge-background-success: rgb(25, 135, 84);
+  --badge-background-warn: rgb(255, 193, 7);
+  --badge-background-error: rgb(220, 53, 69);
+  color: var(--badge-color-default);
+  background: var(--badge-background-default);
+  --_badge-color-default-else-0: var(--badge-color);
+  --badge-color-DEFAULT: var(--_badge-color-default-else-0);
+  --_badge-color-primary-else-0: var(--badge-color);
+  --badge-color-PRIMARY: var(--_badge-color-primary-else-0);
+  --_badge-color-secondary-else-0: var(--badge-color);
+  --badge-color-SECONDARY: var(--_badge-color-secondary-else-0);
+  --_badge-color-info-else-0: var(--badge-color);
+  --badge-color-INFO: var(--_badge-color-info-else-0);
+  --_badge-color-success-else-0: var(--badge-color);
+  --badge-color-SUCCESS: var(--_badge-color-success-else-0);
+  --_badge-color-warn-else-0: var(--badge-color);
+  --badge-color-WARN: var(--_badge-color-warn-else-0);
+  --_badge-color-error-else-0: var(--badge-color);
+  --badge-color-ERROR: var(--_badge-color-error-else-0);
+  --_badge-color-paused-position: calc(
+    -5ms
+    - var(--badge-color-DEFAULT) * 0ms
+    - var(--badge-color-PRIMARY) * 10ms
+    - var(--badge-color-SECONDARY) * 20ms
+    - var(--badge-color-INFO) * 30ms
+    - var(--badge-color-SUCCESS) * 40ms
+    - var(--badge-color-WARN) * 50ms
+    - var(--badge-color-ERROR) * 60ms
+  );
+  --badge-ANIMATION: badgeColorScheme 100ms step-end both paused var(--_badge-color-paused-position);
+  animation: var(--badge-ANIMATION);
+
+  --badge-pad: var(--badge-size);
+  --badge-font: var(--badge-size);
+
+  --_badge-pad-xs-else-0: var(--badge-pad);
+  --badge-pad-XS: var(--_badge-pad-xs-else-0); /* 0 or 1 */
+
+  --_badge-pad-sm-else-0: var(--badge-pad);
+  --badge-pad-SM: var(--_badge-pad-sm-else-0); /* 0 or 1 */
+
+  --_badge-pad-md-else-0: var(--badge-pad);
+  --badge-pad-MD: var(--_badge-pad-md-else-0); /* 0 or 1 */
+
+  --_badge-pad-lg-else-0: var(--badge-pad);
+  --badge-pad-LG: var(--_badge-pad-lg-else-0); /* 0 or 1 */
+
+  --_badge-pad-xl-else-0: var(--badge-pad);
+  --badge-pad-XL: var(--_badge-pad-xl-else-0); /* 0 or 1 */
+
+  --_badge-font-xs-else-0: var(--badge-font);
+  --badge-font-XS: var(--_badge-font-xs-else-0); /* 0 or 1 */
+
+  --_badge-font-sm-else-0: var(--badge-font);
+  --badge-font-SM: var(--_badge-font-sm-else-0); /* 0 or 1 */
+
+  --_badge-font-md-else-0: var(--badge-font);
+  --badge-font-MD: var(--_badge-font-md-else-0); /* 0 or 1 */
+
+  --_badge-font-lg-else-0: var(--badge-font);
+  --badge-font-LG: var(--_badge-font-lg-else-0); /* 0 or 1 */
+
+  --_badge-font-xl-else-0: var(--badge-font);
+  --badge-font-XL: var(--_badge-font-xl-else-0); /* 0 or 1 */
+
+  --badge-pad-xs: 4px;
+  --badge-pad-sm: 8px;
+  --badge-pad-md: 12px;
+  --badge-pad-lg: 16px;
+  --badge-pad-xl: 20px;
+  
+  --badge-PAD: calc(
+    var(--badge-pad-XS) * var(--badge-pad-xs)
+    + var(--badge-pad-SM) * var(--badge-pad-sm)
+    + var(--badge-pad-MD) * var(--badge-pad-md)
+    + var(--badge-pad-LG) * var(--badge-pad-lg)
+    + var(--badge-pad-XL) * var(--badge-pad-xl)
+  );
+  --badge-pad-block: 0.25;
+  padding-inline: var(--badge-PAD);
+  --badge-PAD-BLOCK: calc(var(--badge-PAD) * var(--badge-pad-block));
+  padding-block: var(--badge-PAD-BLOCK);
+  --badge-radius: var(--badge-PAD-BLOCK);
+  border-radius: var(--badge-radius);
+
+  --badge-font-xs: 0.75rem;
+  --badge-font-sm: 0.875rem;
+  --badge-font-md: 1rem;
+  --badge-font-lg: 1.125rem;
+  --badge-font-xl: 1.25rem;
+  
+  --badge-FONT: calc(
+    var(--badge-font-XS) * var(--badge-font-xs)
+    + var(--badge-font-SM) * var(--badge-font-sm)
+    + var(--badge-font-MD) * var(--badge-font-md)
+    + var(--badge-font-LG) * var(--badge-font-lg)
+    + var(--badge-font-XL) * var(--badge-font-xl)
+  );
+  font-size: var(--badge-FONT);
+  line-height: 1;
+
+  --badge-icon: var(--badge-icon-color, none);
+  /* if bade-icon is a url or color, this becomes 'left' b/c url is invalid here, else if unset by user, it's 'none' */
+  --badge-icon-position: var(--badge-icon);
+
+  display: inline-flex;
+  --_badge-ip-fd-r-else-tb: var(--badge-icon-position);
+  --_badge-ip-flex-direction: var(--_badge-ip-fd-r-else-tb);
+  flex-direction: var(--_badge-ip-flex-direction);
+  vertical-align: middle;
+  white-space: nowrap;
+  align-items: center;
+
+  --_badge-ip-left-else-0: var(--badge-icon-position);
+  --badge-ip-LEFT: var(--_badge-ip-left-else-0); /* 0 or 1 */
+  --_badge-ip-right-else-0: var(--badge-icon-position);
+  --badge-ip-RIGHT: var(--_badge-ip-right-else-0); /* 0 or 1 */
+  --_badge-ip-top-else-0: var(--badge-icon-position);
+  --badge-ip-TOP: var(--_badge-ip-top-else-0); /* 0 or 1 */
+  --_badge-ip-bottom-else-0: var(--badge-icon-position);
+  --badge-ip-BOTTOM: var(--_badge-ip-bottom-else-0); /* 0 or 1 */
+}
+
+:where(.badge)::before {
+  --_badge-ip-bd-n-else-lt: var(--badge-icon-position);
+  --_badge-ip-bd-ni-else-t: var(--_badge-ip-bd-n-else-lt);
+  --_badge-ip-before-display: var(--_badge-ip-bd-ni-else-t);
+  display: var(--_badge-ip-before-display);
+}
+:where(.badge)::after {
+  --_badge-ip-ad-n-else-rb: var(--badge-icon-position);
+  --_badge-ip-ad-ni-else-b: var(--_badge-ip-ad-n-else-rb);
+  --_badge-ip-after-display: var(--_badge-ip-ad-ni-else-b);
+  display: var(--_badge-ip-after-display);
+}
+:where(.badge)::before,
+:where(.badge)::after {
+  content: "";
+  background: var(--badge-icon) center center / auto 100%;
+  background-color: var(--badge-icon-color, black);
+  height: calc(var(--badge-FONT) * 1.125);
+  align-self: stretch;
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  
+  --_badge-is-square-else-0: var(--badge-icon-shape);
+  --badge-is-SQUARE: var(--_badge-is-square-else-0); /* 0 or 1 */
+  --_badge-is-rounded-else-0: var(--badge-icon-shape);
+  --badge-is-ROUNDED: var(--_badge-is-rounded-else-0); /* 0 or 1 */
+  --_badge-is-circle-else-0: var(--badge-icon-shape);
+  --badge-is-CIRCLE: var(--_badge-is-circle-else-0); /* 0 or 1 */
+  
+  border-radius: calc(
+    var(--badge-is-SQUARE) * 0px
+    + var(--badge-is-ROUNDED) * calc(var(--badge-radius) * 0.75)
+    + var(--badge-is-CIRCLE) * 50%
+  );
+  
+  margin-left: calc(
+    var(--badge-ip-RIGHT) * var(--badge-PAD-BLOCK)
+    + (var(--badge-ip-LEFT) + var(--badge-ip-TOP) + var(--badge-ip-BOTTOM)) * (var(--badge-PAD-BLOCK) - var(--badge-PAD))
+  );
+  margin-right: calc(
+    var(--badge-ip-LEFT) * var(--badge-PAD-BLOCK)
+    + (var(--badge-ip-RIGHT) + var(--badge-ip-TOP) + var(--badge-ip-BOTTOM)) * (var(--badge-PAD-BLOCK) - var(--badge-PAD))
+  );
+  margin-top: calc(
+    var(--badge-ip-BOTTOM) * var(--badge-PAD-BLOCK)
+  );
+  margin-bottom: calc(
+    var(--badge-ip-TOP) * var(--badge-PAD-BLOCK)
+  );
+}

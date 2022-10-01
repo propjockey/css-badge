@@ -1,0 +1,23 @@
+{
+  "name": "css-badge",
+  "version": "1.0.0",
+  "description": "css-only badge component",
+  "main": "css-badge.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/propjockey/css-badge.git"
+  },
+  "keywords": [
+    "css",
+    "badge"
+  ],
+  "author": "Jane Ori",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/propjockey/css-badge/issues"
+  },
+  "homepage": "https://github.com/propjockey/css-badge#readme"
+}
